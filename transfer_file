@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# transfers a file from our client to a server
+
+if [ $# -lt 2 ];
+then
+	echo "Usage: transfer_file <file> <server>"
+	exit 1
+fi
+
+file=$1
+server=$2
+
+scp -o StrictHostKeyChecking=no "$file" "$server":~/
