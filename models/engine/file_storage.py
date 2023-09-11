@@ -25,28 +25,12 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        if cls is not None:
-            try:
-                cls = eval(cls)
-            except Exception as e:
-                pass
-            for key, val in self.classes.items():
-                if val == cls:
-                    scls = key
-                    break
-                else:
-                    scls = None
-
-            if scls is not None:
-                new_dict = {}
-                for key, val in self.__objects.items():
-                    # print(scls, "===>", key)
-                    if scls in key:
-                        new_dict[key] = val
-                return new_dict
-            else:
-                # print("--E--: No such Instance")
-                pass
+        if cls:
+            new_dict = {}
+            for key, val in self.__objects.items():
+                if key.split(".")[0] == cls:
+                    new_dict[key] = val
+            return new_dict
         else:
             return self.__objects
 

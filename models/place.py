@@ -2,7 +2,19 @@
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
 from os import getenv
-from sqlalchemy import Column, String, Integer, Float, ForeignKey
+from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
+from sqlalchemy.orm import relationship
+
+st_type = getenv("HBNB_TYPE_STORAGE")
+
+if st_type == "db":
+    place_amenity = Table("place_amenity", Base.metadata,
+                          Column("place_id", String(60),
+                                 ForeignKey("places.id"),
+                                 primary_key=True, nullable=False),
+                          Column("amenity_id", String(60),
+                                 ForeignKey("amenities.id"),
+                                 primary_key=True, nullable=False))
 
 
 class Place(BaseModel, Base):
@@ -11,7 +23,7 @@ class Place(BaseModel, Base):
     """
     __tablename__ = "places"
 
-    if getenv("HBNB_TYPE_STORAGE") == "db":
+    if st_type == "db":
         city_id = Column(String(60), ForeignKey("cities.id"), nullable=False)
         user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
         name = Column(String(128), nullable=False)
@@ -22,6 +34,12 @@ class Place(BaseModel, Base):
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float)
         longitude = Column(Float)
+
+        reviews = relationship("Review", backref="place",
+                               cascade="all, delete")
+
+        amenities = relationship("Amenity", back_populates="place_amenities",
+                                 secondary=place_amenity, viewonly=False)
     else:
         city_id = ""
         user_id = ""
@@ -34,3 +52,38 @@ class Place(BaseModel, Base):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
+
+        @property
+        def reviews(self):
+            """
+            reviews getter
+            """
+            from models import storage
+
+            rev_lst = []
+            for rev in storage.all("Review").values():
+                if rev.place_id == self.id:
+                    rev_lst.append(rev)
+            return rev_lst
+
+        @property
+        def amenities(self):
+            """
+            amenities getter
+            """
+            from models import storage
+
+            amenity_lst = []
+            for amty in storage.all("Amenity").values():
+                if amty.id in self.amenity_ids:
+                    amenity_lst.append(amty)
+            return amenity_lst
+
+        @amenities.setter
+        def amenities(self, arg):
+            """
+            amenity setter
+            """
+            if isinstance(obj, Amenity):
+                if obj.id not in self.amenity_ids:
+                    self.amenity_ids.append(obj.id)
