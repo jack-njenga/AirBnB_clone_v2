@@ -81,11 +81,12 @@ class FileStorage:
         Deletes obj from __objects
         """
         if obj:
-            print(type(obj))
+            # print(type(obj))
             key = obj.__class__.__name__ + "." + obj.id
-            print(list(self.__objects.keys()))
-            if key in list(self.__objects.keys()):
+            # print(list(self.__objects.keys()))
+            if key in self.__objects.keys():
                 del self.__objects[key]
+                self.save()
             else:
                 pass
 
