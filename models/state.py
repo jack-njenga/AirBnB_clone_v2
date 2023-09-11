@@ -5,32 +5,31 @@ State Module for HBNB project
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-import models
+from os import getenv
 
 
 class State(BaseModel, Base):
     """
     State class
     """
-    from models.city import City
-
     __tablename__ = "states"
-    if models.engine_type == "db":
+
+    if getenv("ST") == "db":
         name = Column(String(128), nullable=False)
         cities = relationship("City", backref="state",
-                              cascade="all, delete-orphan")
+                              cascade="all, delete", lazy="dynamic")
     else:
         name = ""
 
         @property
         def cities(self):
             """
-            Returns cities in State
+            cities getter
             """
-            cities = []
+            from models import storage
 
-            for key, value in models.storage.all(City).items():
-                if key.split('.')[0] == "City":
-                    if self.id == value.state_id and value not in cities:
-                        cities.append(value)
-            return cities
+            cty_st = []
+            for city in storage.all("City"):
+                if city.state_id == self.id:
+                    cty_st.append(city)
+            return cty_st

@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-This module defines a class to manage file storage for hbnb clone
-"""
+"""This module defines a class to manage file storage for hbnb clone"""
 import json
 
 
@@ -10,18 +8,47 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
+    def __init__(self):
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
+
+        self.classes = {
+                'BaseModel': BaseModel, 'User': User, 'Place': Place,
+                'State': State, 'City': City, 'Amenity': Amenity,
+                'Review': Review
+                }
+
     def all(self, cls=None):
-        """
-        Returns a dictionary of models currently in storage
-        """
-        if cls:
-            cls_dict = {}
-            for key, val in self.__objects.items():
-                if type(val) is cls:
-                    cls_dict[key] = val
-            return cls_dict
+        """Returns a dictionary of models currently in storage"""
+        if cls is not None:
+            try:
+                cls = eval(cls)
+            except Exception as e:
+                pass
+            for key, val in self.classes.items():
+                if val == cls:
+                    scls = key
+                    break
+                else:
+                    scls = None
+
+            if scls is not None:
+                new_dict = {}
+                for key, val in self.__objects.items():
+                    # print(scls, "===>", key)
+                    if scls in key:
+                        new_dict[key] = val
+                return new_dict
+            else:
+                # print("--E--: No such Instance")
+                pass
         else:
-            return FileStorage.__objects
+            return self.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -31,42 +58,43 @@ class FileStorage:
         """Saves storage dictionary to file"""
         with open(FileStorage.__file_path, 'w') as f:
             temp = {}
-            temp.update(FileStorage.__objects)
+            temp.update(self.__objects)
             for key, val in temp.items():
                 temp[key] = val.to_dict()
             json.dump(temp, f)
 
     def reload(self):
-        """Loads storage dictionary from file"""
-        from models.base_model import BaseModel
-        from models.user import User
-        from models.place import Place
-        from models.state import State
-        from models.city import City
-        from models.amenity import Amenity
-        from models.review import Review
-
-        classes = {
-                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                    'State': State, 'City': City, 'Amenity': Amenity,
-                    'Review': Review
-                  }
+        """
+        Loads storage dictionary from file
+        """
         try:
             temp = {}
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                    self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = self.classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
 
     def delete(self, obj=None):
         """
-        deletes obj from __objects if it's inside
+        Deletes obj from __objects
         """
-        if obj is None:
-            pass
-        else:
-            obj_id = obj.__class__.__name__ + "." + obj.id
-            if self.__objects.get(obj_id, None):
-                del self.__objects[obj_id]
+        if obj:
+            print(type(obj))
+            key = obj.__class__.__name__ + "." + obj.id
+            print(list(self.__objects.keys()))
+            if key in list(self.__objects.keys()):
+                del self.__objects[key]
+            else:
+                pass
+
+    def dell(self):
+        """
+        deletes all objects
+        """
+        print("DELETING ALL OBJECTS")
+        print("\t\tARE YOU SURE")
+        if input("\t\t[YES/NO] ") in ["YES"]:
+            self.__objects = {}
+            self.save()
