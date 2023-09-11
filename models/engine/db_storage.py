@@ -23,7 +23,9 @@ env = getenv("HBNB_ENV")
 
 obj_classes = {
         "City": City,
-        "State": State
+        "State": State,
+        "User": User,
+        "Place": Place
         }
 
 
