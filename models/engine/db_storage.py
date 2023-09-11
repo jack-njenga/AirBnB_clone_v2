@@ -19,6 +19,7 @@ user = getenv("HBNB_MYSQL_USER")
 pwd = getenv("HBNB_MYSQL_PWD")
 host = getenv("HBNB_MYSQL_HOST")
 db = getenv("HBNB_MYSQL_DB")
+env = getenv("HBNB_ENV")
 
 obj_classes = {
         "City": City,
@@ -37,11 +38,15 @@ class DBStorage():
         """
         init
         """
-        url = "mysql+mysqlconnector://root:\
-                #Jarvis9101@localhost:3306/hbnb_dev_db"
+        url = "mysql+mysqlconnector://root:root\
+                @localhost:3306/hbnb_dev_db"
         url2 = "mysql+mysqlconnector://hbnb_dev:\
                 hbnb_dev_pwd@localhost:3306/hbnb_dev_db"
-        self.__engine = create_engine(url2, pool_pre_ping=True)
+        url3 = f"mysql+mysqldb://{user}:{pwd}@localhost:3306/{db}"
+        self.__engine = create_engine(url3, pool_pre_ping=True)
+
+        if env == "test":
+            Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
         """
