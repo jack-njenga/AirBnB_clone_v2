@@ -7,8 +7,8 @@ then
 	echo "Nginx Already Installed">/dev/null
 else
 	echo "Installing Nginx"
-	sudo apt-get update
-	sudo install -y nginx
+	sudo apt-get update>/dev/null
+	sudo install -y nginx>/dev/null
 fi
 
 # /data/ dir
@@ -45,15 +45,9 @@ html_content="<html>
 
 echo "$html_content" | sudo tee "/data/web_static/releases/test/index.html" > /dev/null
 
-if [ -L "/data/web_static/current" ];
-then
-	sudo rm "/data/web_static/current"
-	# echo "symbolic link removed"
-fi
+sudo ln -sf "/data/web_static/releases/test" "/data/web_static/current"
 
-sudo ln -s "/data/web_static/releases/test" "/data/web_static/current"
-
-sudo chown -R ubuntu:ubuntu "/data/"
+sudo chown -R "ubuntu:ubuntu" /data
 config='\\tlocation /hbnb_static \{\n\t\talias /data/web_static/current/;\n\t\}'
 path="/etc/nginx/sites-available/default"
 
@@ -65,5 +59,5 @@ else
 	sudo sed -i "/^\s*server\s/a $config" "$path"
 	echo "hbnb_static Configured">/dev/null
 fi
-sudo service nginx restart
-sudo nginx -s reload
+sudo service nginx restart>/dev/null
+# sudo nginx -s reload
