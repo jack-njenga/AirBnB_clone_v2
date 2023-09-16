@@ -23,6 +23,7 @@ def do_pack():
     else:
         return path
 
+
 def do_deploy(archive_path):
     """
     deploy
@@ -45,6 +46,7 @@ def do_deploy(archive_path):
         print("New version deployed!")
         return True
 
+
 def deploy():
     """
     Deployment
@@ -54,6 +56,7 @@ def deploy():
         return False
     else:
         return do_deploy(path)
+
 
 def do_clean(number=0):
     """
