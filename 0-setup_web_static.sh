@@ -4,7 +4,7 @@
 # installing nginx if not installed
 if command -v nginx > /dev/null;
 then
-	echo "Nginx Already Installed"
+	echo "Nginx Already Installed">/dev/null
 else
 	echo "Installing Nginx"
 	sudo apt-get update
@@ -38,7 +38,7 @@ html_content="<html>
 	<title>Nginx Config Test HTML Page</title>
 </head>
 <body>
-	<h1>Welcome to my Nginx Config Test HTML page!</h1>
+	<h1>Hello this Nginx Config Test HTML page!</h1>
 	<p>Sample HTML file.</p>
 </body>
 </html>"
@@ -48,20 +48,22 @@ echo "$html_content" | sudo tee "/data/web_static/releases/test/index.html" > /d
 if [ -L "/data/web_static/current" ];
 then
 	sudo rm "/data/web_static/current"
-	echo "symbolic link removed"
+	# echo "symbolic link removed"
 fi
 
 sudo ln -s "/data/web_static/releases/test" "/data/web_static/current"
 
 sudo chown -R ubuntu:ubuntu "/data/"
+config='\\tlocation /hbnb_static \{\n\t\talias /data/web_static/current/;\n\t\}'
+path="/etc/nginx/sites-available/default"
 
 # configuring hbnb_static page reponse
-if grep -R "hbnb_static" /etc/nginx/sites-available/default > /dev/null;
+if grep "location /hbnb_static {" "$path">/dev/null;
 then
-	echo "hbnb_static Already Configured"
+	echo "hbnb_static Already Configured">/dev/null
 else
-	sudo sed -i '/^\tlocation \/ {$/a \\n\tlocation /hbnb_static/ {\n\talias /data/web_static/current/;\n\t}' /etc/nginx/sites-available/default;
-	echo "hbnb_static Configured"
+	sudo sed -i "/^\s*server\s/a $config" "$path"
+	echo "hbnb_static Configured">/dev/null
 fi
-
 sudo service nginx restart
+sudo nginx -s reload
