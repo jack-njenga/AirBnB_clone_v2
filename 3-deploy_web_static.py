@@ -26,19 +26,19 @@ def do_pack():
         return path
 
 
-def do_deploy():
+def do_deploy(archive_path):
     """
-    Ddeploy class
+    Do deploy class
     """
     if not os.path.exists(archive_path):
-        return 0
+        return False
     else:
         put(archive_path, "/tmp/")
         name = archive_path.split("/")[-1]
         no_fmt = name.split(".")[0]
         path = "/data/web_static/releases/"
 
-        sudo("mkdir -p {path}{no_fmt}/")
+        sudo(f"mkdir -p {path}{no_fmt}/")
         sudo(f"tar -xvf /tmp/{name} -C {path}{no_fmt}/")
         sudo(f"rm /tmp/{name}")
         sudo(f"mv {path}{no_fmt}/web_static/* {path}{no_fmt}/")
@@ -47,7 +47,7 @@ def do_deploy():
         sudo(f"ln -s {path}{no_fmt} /data/web_static/current")
 
         print("New version deployed!")
-        return 1
+        return True
 
 
 def deploy():
@@ -56,6 +56,6 @@ def deploy():
     """
     path = do_pack()
     if path is None:
-        return 0
+        return False
     else:
         return do_deploy(path)
