@@ -1,32 +1,35 @@
 .places {
-	display: block;
-	margin: 45px auto;
-	text-align: center;
+        display: flex;
+	max-width: 1000px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.places h1 {
+        display: flex;
+	width: 100%;
+	padding-left: 25px;
+	font-size: 30px;
+        align-self: top;
 }
 
-article {
-	display: inline-block;
+.places article {
+        display: flex;
 	width: 390px;
 	padding: 20px;
 	margin: 20px;
 	border: 1px solid #FF5A5F;
 	border-radius: 4px;
-	text-align: center;
+	justify-content: center;
+        text-align: center;
 }
 
-h1 {
-	float: left;
-	text-align: left;
-	width: 95%;
-	display: block;
-	margin-top: 0px;
-	margin-left: 20px;
-	margin-bottom: 5px;
+.places article h2 {
+        display: flex;
 	font-size: 30px;
+	margin: 0 auto;
 }
 
-article h2 {
-	font-size: 30px;
-	padding: 0px;
-	margin: auto;
+.places article:hover {
+        opacity: 70%;
 }

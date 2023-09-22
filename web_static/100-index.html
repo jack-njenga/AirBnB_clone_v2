@@ -1,195 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>AirBnB clone</title>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AirBnB</title>
 
-		<link rel="shortcut icon" href="images/icon.ico" >
+        <link rel="stylesheet" href="styles/4-common.css">
+        <link rel="stylesheet" href="styles/6-filters.css">
+        <link rel="stylesheet" href="styles/100-places.css">
+        <link rel="stylesheet" href="styles/3-header.css">
+        <link rel="stylesheet" href="styles/3-footer.css">
+        <link rel="icon" type="icon" href="images/icon.png">
+</head>
+<body>
+        <header>
+        </header>
 
-		<link rel="stylesheet" href="styles/4-common.css"/>
-		<link rel="stylesheet" href="styles/3-header.css"/>
-		<link rel="stylesheet" href="styles/3-footer.css"/>
-		<link rel="stylesheet" href="styles/6-filters.css"/>
-		<link rel="stylesheet" href="styles/100-places.css"/>
-	</head>
-    <body>
-		<header>
-			<div id="header_logo"></div>
-		</header>
-		<div class="container">
-			<section class="filters">
-				<button>Search</button>
-				<div class="locations">
-					<h3>States</h3>
-					<h4>California, Arizona...</h4>
-					<ul class="popover">
-						<li><h2>Arizona</h2>
-							<ul>
-								<li><h4>Page</h4></li>
-								<li><h4>Page2</h4></li>
-							</ul></li>
-						<li><h2>California</h2>
-							<ul>
-								<li><h4>San Francisco</h4></li>
-								<li><h4>Los Altos</h4></li>
-							</ul></li>
-					</ul>
-				</div>
-				<div class="filter_amenities">
-					<h3>Amenities</h3>
-					<h4>Internet, Kitchen...</h4>
-					<ul class="popover">
-						<li><h4>Internet</h4></li>
-						<li><h4>TV</h4></li>
-						<li><h4>Kitchen</h4></li>
-						<li><h4>Iron</h4></li>
-					</ul>
-				</div>
+        <div class="container">
+                <section class="filters">
+                        <div class="locations">
+                                <h3>States</h3>
+                                <h4>Nairobi, Mombasa, Kiambu, ...</h4>
+                                <ul class="popover">
+                                        <li>
+                                                <h2>Nairobi</h2>
+                                                <ul>
+                                                        <p>Embakasi</p>
+                                                        <p>Eastleigh</p>
+                                                </ul>
+                                        </li>
 
-			</section>
-			<section class="places">
-				<h1>Places</h1>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">My home</h2>
-						<div class="price_by_night">$80</div>
-					</div>
-					<div class="information">
-						<div class="max_guest">
-							<div class="guest_icon"></div>
-							<p>2 Guests</p>
-						</div>
-						<div class="number_rooms">
-							<div class="bed_icon"></div>
-							<p>1 Bedroom</p>
-						</div>
-						 <div class="number_bathrooms">
-							<div class="bath_icon"></div>
-							<p>1 Bathroom</p>
-						</div>
-					</div>
-					<div class="user"><b>Owner</b>: John Lennon</div>
-					<div class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </div>
-					<div class="amenities">
-						<h2 class="article_subtitle">Amenities</h2>
-						<ul>
-							<li><div class="tv_icon"></div>TV</li>
-							<li><div class="wifi_icon"></div>Wifi</li>
-							<li><div class="pet_icon"></div>Pet friendly</li>
-						</ul>
-					</div>
-					<div class="reviews">
-						<h2 class="article_subtitle">Reviews</h2>
-						<ul>
-							<li>
-								<div class="review_item">
-									<h3>From Bob Dylan the 27th January 2017</h3>
-									<p class="review_text">Wow, what can I say?! I'm a real rolling stone, you may have heard, but - by golly - I'd just as well settle down in this humble home, if you'd part with it - course, I'm sure you wouldn't. Real shame too. Oh well...</p>
-								</div>
-							</li>
-							<li>
-								<div class="review_item">
-									<h3>From Justin Majetich the 28th April 1991</h3>
-									<p class="review_text">I was birthed in this here bathtub today!</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">Tiny house</h2>
-						<div class="price_by_night">$65</div>
-					</div>
-					<div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon"></div>
-                            <p>4 Guests</p>
+                                        <li>
+                                                <h2>Kiambu:</h2>
+                                                <ul>
+                                                        <p>Juja</p>
+                                                        <p>Gatundu</p>
+                                                </ul>
+
+                                        </li>
+                                </ul>
                         </div>
-                        <div class="number_rooms">
-                            <div class="bed_icon"></div>
-                            <p>2 Bedroom</p>
+                        <div class="amenities">
+                                <h3>Amenities</h3>
+                                <h4>Swimming Pool, Free Wifi, ...</h4>
+                                <ul class="popover">
+                                        <li>
+                                                <p>Swimming Pool</p>
+                                                <p>Free Wifi</p>
+                                                <p>Free Parking</p>
+                                                <p>TV</p>
+                                                <p>Kitchen</p>
+                                        </li>
+                                </ul>
                         </div>
-                         <div class="number_bathrooms">
-                            <div class="bath_icon"></div>
-                            <p>1 Bathroom</p>
-                        </div>
-                    </div>
-					<div class="user"><b>Owner</b>: Adrienne</div>
-					<div class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-					<div class="amenities">
-                        <h2 class="article_subtitle">Amenities</h2>
-                        <ul>
-                            <li><div class="tv_icon"></div>TV</li>
-                            <li><div class="wifi_icon"></div>Wifi</li>
-                        </ul>
-                    </div>
-                    <div class="reviews">
-                        <h2 class="article_subtitle">Reviews</h2>
-                        <ul>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Bilbo Baggins the 6th June 2089</h3>
-                                	<p class="review_text">The place was spotless, and Adrienne was an excellent host, leaving fresh biscuits out for my ravenous arrival.</p>
-								</div>
-                            </li>
-                        </ul>
-                    </div>
-				</article>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">A suite</h2>
-						<div class="price_by_night">$180</div>
-					</div>
-					<div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon"></div>
-                            <p>5 Guests</p>
-                        </div>
-                        <div class="number_rooms">
-                            <div class="bed_icon"></div>
-                            <p>3 Bedroom</p>
-                        </div>
-                         <div class="number_bathrooms">
-                            <div class="bath_icon"></div>
-                            <p>2 Bathroom</p>
-                        </div>
-                    </div>
-					<div class="user"><b>Owner</b>: Betty Holberton</div>
-					<div class="description">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</div>
-					<div class="amenities">
-                        <h2 class="article_subtitle">Amenities</h2>
-                        <ul>
-                            <li><div class="pet_icon"></div>Pet friendly</li>
-                        </ul>
-                    </div>
-                    <div class="reviews">
-                        <h2 class="article_subtitle">Reviews</h2>
-                        <ul>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Beyonce Knowles the 16th September 2013</h3>
-                                	<p class="review_text">Betty was a sweetheart. Jay, I and the kids thoroughly enjoyed out stay.</p>
-								</div>
-                            </li>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Julien Barbier the 1th August 2008</h3>
-                                	<p class="review_text">What a beautiful home! I had one of the best night's sleeps of my life and woke up with an idea!</p>
-								</div>
-                            </li>
-                        </ul>
-                    </div>
-				</article>
-			</section>
-		</div>
-		<footer>
-			<p>Holberton School</p>
-		</footer>
-	</body>
+                        <button>Search</button>
+                </section>
+                <section class="places">
+                        <h1>Places</h1>
+                        <article>
+                                <h2>Our Homie</h2>
+                                <div class="price_by_night">$40</div>
+
+                                <div class="information">
+                                        <div class="max_guest">3 Guest</div>
+                                        <div class="number_rooms">8 Rooms</div>
+                                        <div class="number_bathrooms">4 Bathrooms</div>
+                                </div>
+
+                                <div class="user">
+                                        <b>Owner: </b>Paul Njenga
+                                </div>
+
+                                <div class="description">
+                                        <p>This is a lovely 8 Bedrooms and 4 Bathrooms
+                                                Apartment That can accomodate 5 people
+                                                and 3 Guests at Nairobi.</p>
+                                </div>
+                                <div class="amenities">
+                                        <h2>Amenities</h2>
+                                        <ul>
+                                                <li class="tv"><p>TV</p></li>
+                                                <li class="park"><p>Parking</p></li>
+                                                <li class="pet"><p>Pet</p></li>
+                                                <li class="wifi"><p>Wifi</p></li>
+                                                <li class="gym"><p>Gym</p></li>
+                                        </ul>
+                                </div>
+                                <div class="reviews">
+                                        <h2>reviews</h2>
+                                        <ul>
+                                                <li>
+                                                        <h3>John : Monday, 24th July 2023</h3>
+                                                </li>
+                                                <li>
+                                                        <p>
+                                                                Paul Njenga's Nairobi Airbnb is
+                                                                a spacious and tastefully decorated 8-bedroom,
+                                                                4-bathroom apartment, accommodating up to 5 people
+                                                                and providing a delightful stay in a convenient
+                                                                location. Mr. Julius's warm hospitality and
+                                                                valuable local recommendations added a personal
+                                                                touch to our enjoyable experience.
+                                                        </p>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </article>
+                        <article>
+                                <h2>Tinty House</h2>
+                                <div class="price_by_night">$30</div>
+
+                                <div class="information">
+                                        <div class="max_guest">2 Guest</div>
+                                        <div class="number_rooms">8 Rooms</div>
+                                        <div class="number_bathrooms">3 Bathrooms</div>
+                                </div>
+
+                                <div class="user">
+                                        <b>Owner: </b>Mercy Njenga
+                                </div>
+
+                                <div class="description">
+                                        <p>Welcome to our lavish suite, owned by Mercy Njenga,
+                                                where luxury and comfort meet. With 8 rooms, 3
+                                                bathrooms, and space for 2 guests, it's an ideal
+                                                choice for a memorable stay. Immerse yourself in
+                                                the city's vibrant atmosphere during the day and
+                                                return to unwind in style in the evenings. Don't
+                                                miss the chance to experience elegance, convenience,
+                                                and personalized hospitality in one incredible
+                                                package. Book now for an unforgettable getaway!</p>
+                                </div>
+                                <div class="amenities">
+                                        <h2>Amenities</h2>
+                                        <ul>
+                                                <li class="tv"><p>TV</p></li>
+                                                <li class="wifi"><p>Wifi</p></li>
+                                                <li class="park"><p>Parking</p></li>
+                                                <li class="pool"><p>Swimming Pool</p></li>
+                                        </ul>
+                                </div>
+                                <div class="reviews">
+                                        <h2>reviews</h2>
+                                        <ul>
+                                                <li>
+                                                        <h3>Danniel : Monday, 24th July 2023</h3>
+                                                </li>
+                                                <li>
+                                                        <p>
+                                                                Peter Johnson's lavish suite was a perfect
+                                                                blend of luxury and comfort. The personalized
+                                                                hospitality, 8 rooms, and convenient location
+                                                                made it an unforgettable getaway for my stay.
+                                                                Highly recommended!
+                                                        </p>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </article>
+                        <article>
+                                <h2>A suite</h2>
+                                <div class="price_by_night">$10</div>
+
+                                <div class="information">
+                                        <div class="max_guest">1 Guest</div>
+                                        <div class="number_rooms">4 Rooms</div>
+                                        <div class="number_bathrooms">1 Bathrooms</div>
+                                </div>
+
+                                <div class="user">
+                                        <b>Owner: </b>Thomas Newton
+                                </div>
+
+                                <div class="description">
+                                        <p><b>Elegant Suite for the Solo Traveler.</b>
+                                                Welcome to this charming suite, exclusively owned
+                                                by Thomas Newton. With a delightful price of $10 per
+                                                night, it offers the perfect retreat for a single guest.
+                                                The suite features 4 cozy rooms and a well-maintained
+                                                bathroom, providing you with a comfortable and
+                                                convenient stay. Don't miss the chance to experience
+                                                the warmth of this lovely accommodation. Book now and
+                                                indulge in a tranquil escape!</p>
+                                </div>
+                                <div class="amenities">
+                                        <h2>Amenities</h2>
+                                        <ul>
+                                                <li class="tv"><p>TV</p></li>
+                                                <li class="pet"><p>Pet</p></li>
+                                                <li class="park"><p>Parking</p></li>
+                                                <li class="gym"><p>Gym</p></li>
+                                        </ul>
+                                </div>
+                                <div class="reviews">
+                                        <h2>reviews</h2>
+                                        <ul>
+                                                <li>
+                                                        <h3>Peter : Monday, 24th July 2023</h3>
+                                                </li>
+                                                <li>
+                                                        <p>
+                                                                I had an amazing stay in this elegant suite!
+                                                                Thomas Newton's hospitality, combined with the
+                                                                cozy rooms and affordable price, made it a perfect
+                                                                choice for a solo traveler like me. I highly
+                                                                recommend booking this lovely accommodation for a
+                                                                tranquil and enjoyable escape.
+                                                        </p>
+                                                </li>
+                                        </ul>
+                                        <ul>
+                                                <li>
+                                                        <h3>Paul : Monday, 24th July2023</h3>
+                                                </li>
+                                                <li>
+                                                        <p>
+                                                                Stepping into Thomas Newton's charming suite felt
+                                                                like finding a hidden gem for a solo traveler like
+                                                                me. With its affordable price of $10 per night,
+                                                                the cozy rooms and well-maintained bathroom
+                                                                provided a comfortable haven during my stay. It's
+                                                                a true retreat that offers both tranquility and
+                                                                warmth, and I'm glad I didn't miss the chance to
+                                                                experience it. Highly recommended for anyone
+                                                                seeking a delightful escape!
+                                                        </p>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </article>
+                        <article>
+                                <h2>Country Side</h2>
+                                <div class="price_by_night">$28</div>
+
+                                <div class="information">
+                                        <div class="max_guest">2 Guest</div>
+                                        <div class="number_rooms">6 Rooms</div>
+                                        <div class="number_bathrooms">2 Bathrooms</div>
+                                </div>
+
+                                <div class="user">
+                                        <b>Owner: </b>Sos Peter
+                                </div>
+
+                                <div class="description">
+                                        <p>
+                                                Escape to the countryside at Sos Peter's
+                                                charming retreat. $28 per night for 2 guests,
+                                                6 rooms, and 2 bathrooms. Relax and enjoy a
+                                                serene stay.
+                                        </p>
+                                </div>
+                                <div class="amenities">
+                                        <h2>Amenities</h2>
+                                        <ul>
+                                                <li class="air"><p>Air Conditioner</p></li>
+                                                <li class="tv"><p>TV</p></li>
+                                                <li class="pet"><p>Pet</p></li>
+                                                <li class="park"><p>Parking</p></li>
+                                                <li class="gym"><p>Gym</p></li>
+                                        </ul>
+                                </div>
+                                <div class="reviews">
+                                        <h2>reviews</h2>
+                                        <ul>
+                                                <li>
+                                                        <h3>Abigal : Monday, 24th July 2023</h3>
+                                                </li>
+                                                <li>
+                                                        <p>
+                                                                My stay at Sos Peter's countryside retreat
+                                                                was an absolute delight. The tranquil
+                                                                surroundings, cozy 6 rooms, and well-maintained
+                                                                2 bathrooms made it a perfect getaway. The
+                                                                owner's warm hospitality added a personal touch,
+                                                                making it an unforgettable experience. Highly
+                                                                recommend for a serene and relaxing stay!
+                                                        </p>
+                                                </li>
+                                        </ul>
+                                        <ul>
+                                                <li>
+                                                        <h3>Mercy : Monday, 20th July2023</h3>
+                                                </li>
+                                                <li>
+                                                        <p>
+                                                                Nice place &#128077;
+                                                        </p>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </article>
+                </section>
+        </div>
+        <footer>
+                <p>
+                        Best School Ever
+                </p>
+        </footer>
+</body>
 </html>
