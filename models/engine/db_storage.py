@@ -60,10 +60,10 @@ class DBStorage():
         if cls is not None:
             if type(cls) is str:
                 cls = eval(cls)
-                objs = self.__session.query(cls)
-                for obj in objs:
-                    key = f"{obj.__class__.__name__}.{obj.id}"
-                    all_obj[key] = obj
+            objs = self.__session.query(cls).all()
+            for obj in objs:
+                key = f"{obj.__class__.__name__}.{obj.id}"
+                all_obj[key] = obj
         else:
             for obj in obj_classes.values():
                 objects = self.__session.query(obj).all()
@@ -96,7 +96,6 @@ class DBStorage():
         Recreates all tables in the database
         """
         # print("===> Reloading")
-        # print("===>", Base.metadata)
         Base.metadata.create_all(self.__engine)
         session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session)()
@@ -107,3 +106,4 @@ class DBStorage():
         """
         self.reload()
         self.__session.close()
+        # self.__session.remove()

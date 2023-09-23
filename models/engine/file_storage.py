@@ -25,10 +25,16 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
+        from models.city import City
         if cls:
             new_dict = {}
+            if type(cls) == str:
+                cls = eval(cls)
             for key, val in self.__objects.items():
-                if key.split(".")[0] == cls:
+                # print(type(val)), print(type(key)), print(type(cls))
+                # print(f"==== {cls.__name__} ====")
+                if key.split(".")[0] == cls.__name__:
+                    # print("---OK---")
                     new_dict[key] = val
             return new_dict
         else:
@@ -83,3 +89,9 @@ class FileStorage:
         if input("\t\t[YES/NO] ") in ["YES"]:
             self.__objects = {}
             self.save()
+
+    def close(self):
+        """
+        Deserilizes the JSON file objects.
+        """
+        self.reload()
