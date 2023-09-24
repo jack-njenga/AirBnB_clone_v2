@@ -49,6 +49,27 @@
                 </section>
                 <section class="places">
                         <h1>Places</h1>
+                        <article>
+                                <h2>Our home</h2>
+                                <div class="price_by_night">$40</div>
+
+                                <div class="information">
+                                        <div class="max_guest">3 Guest</div>
+                                        <div class="number_rooms">8 Rooms</div>
+                                        <div class="number_bathrooms">4 Bathrooms</div>
+                                </div>
+
+                                <div class="user">
+                                        <b>Owner: </b>Paul Njenga
+                                </div>
+
+                                <div class="description">
+                                        <p>This is a lovely 8 Bedrooms and 4 Bathrooms
+                                                Apartment That can accomodate 5 people
+                                                and 3 Guests at Nairobi.</p>
+                                </div>
+                        </article>
+
                         {% for place in places %}
                         <article>
                                 <h2>{{ place.name }}</h2>
@@ -60,34 +81,14 @@
                                         <div class="number_bathrooms">{{ place.number_bathrooms }} Bathrooms</div>
                                 </div>
                                 <div class="user">
-                                        <b>Owner: {{ place.user_id }} </b>
+                                        <b>Owner: {{ users_dict[place.user_id] }} </b>
                                 </div>
                                 <div class="description">
-                                        <p>{{ place.description }}</p>
+                                        <p>{{ place.description | safe }}</p>
                                 </div>
 
                         </article>
                         {% endfor %}
-                        <article>
-                                <h2>My home</h2>
-                                <div class="price_by_night">$40</div>
-
-                                <div class="information">
-                                        <div class="max_guest">3 Guest</div>
-                                        <div class="number_rooms">8 Rooms</div>
-                                        <div class="number_bathrooms">4 Bathrooms</div>
-                                </div>
-
-                                <div class="user">
-                                        <b>Owner: </b>Unnderson Julius
-                                </div>
-
-                                <div class="description">
-                                        <p>This is a lovely 8 Bedrooms and 4 Bathrooms
-                                                Apartment That can accomodate 5 people
-                                                and 3 Guests at Nairobi.</p>
-                                </div>
-                        </article>
                 </section>
         </div>
 

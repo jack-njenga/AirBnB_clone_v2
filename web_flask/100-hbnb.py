@@ -30,8 +30,16 @@ def hbnb():
 
     places = list(storage.all("Place").values())
     sorted_places = sorted(places, key=lambda plc: plc.name)
+
+    users = list(storage.all("User").values())
+    users_dict = {}
+    for user in users:
+        name = f"{user.first_name} {user.last_name}"
+        users_dict[user.id] = name
+
     return render_template("100-hbnb.html", states=sorted_states,
-                           amenities=sorted_amenities, places=sorted_places)
+                           amenities=sorted_amenities, places=sorted_places,
+                           users_dict=users_dict)
 
 
 if __name__ == "__main__":
