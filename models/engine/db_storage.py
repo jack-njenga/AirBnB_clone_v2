@@ -104,6 +104,5 @@ class DBStorage():
         """
         Closses the current session
         """
-        self.reload()
         self.__session.close()
         # self.__session.remove()
