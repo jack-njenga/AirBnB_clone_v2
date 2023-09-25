@@ -46,7 +46,7 @@ class DBStorage():
                 @localhost:3306/hbnb_dev_db"
         url2 = "mysql+mysqlconnector://hbnb_dev:\
                 hbnb_dev_pwd@localhost:3306/hbnb_dev_db"
-        url3 = f"mysql+mysqlconnector://{user}:{pwd}@localhost:3306/{db}"
+        url3 = f"mysql+mysqldb://{user}:{pwd}@localhost:3306/{db}"
         self.__engine = create_engine(url3, pool_pre_ping=True)
 
         if env == "test":

@@ -9,14 +9,6 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.teardown_appcontext
-def close_session(exception):
-    """
-    Removes the current SQLAlchemy Session:
-    """
-    storage.close()
-
-
 @app.route("/states_list", strict_slashes=False)
 def get_states():
     """
@@ -25,6 +17,14 @@ def get_states():
     states = list(storage.all("State").values())
     sorted_states = sorted(states, key=lambda st: st.name)
     return render_template("7-states_list.html", states=sorted_states)
+
+
+@app.teardown_appcontext
+def close_session(exception):
+    """
+    Removes the current SQLAlchemy Session:~
+    """
+    storage.close()
 
 
 if __name__ == "__main__":
